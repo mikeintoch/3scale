@@ -1,0 +1,17 @@
+= Open Banking
+
+Glossary: https://www.openbanking.org.uk/about-us/glossary/
+
+Open Data API Specifications: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/16320694/Open+Data+API+Specifications
+Open Data API Sample Data: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/519143683/Open+Data+API+Dashboard
+
+
+== ATM APIs
+
+ATM Spec: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/230163079/ATM+API+Specification+v2.2.0#ATMAPISpecification_v2.2.0-Swagger
+
+ATM Sample
+
+https://openbanking.santander.co.uk/sanuk/external/open-banking/v2.2/atms
+
+
