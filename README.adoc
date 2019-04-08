@@ -1,12 +1,82 @@
-= Open Banking
+= CECOBAN - Open Banking Platform
+
+* Openshift URL: https://master.cecoban-0142.openshiftworkshop.com
+* Web App URL: https://tutorial-web-app-webapp.apps.cecoban-0142.openshiftworkshop.com
+** user: admin
+** passwd: #Cecoban!
+
+RHSSO URL: https://sso-sso.apps.cecoban-0142.openshiftworkshop.com
+** user: admin
+** passwd: 328bb342d5814a2cbb3ced07a29967e3
+
+3Scale URL: https://3scale-admin.apps.cecoban-0142.openshiftworkshop.com
+3Scale Developer Portal: https://3scale.apps.cecoban-0142.openshiftworkshop.com
+user: admin
+passwd: #Cecoban!
+
+== 3Scale & RHSSO OIDC
+
+* Client ID: 3scale-admin
+* Client Secret: 74364830-2eaf-47c7-8d40-8ccc78f1cb03
+
+OpenID Connect Issuer: 
+https://3scale-admin:74364830-2eaf-47c7-8d40-8ccc78f1cb03@sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking
+
+
+Testing using Postman: 
+https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/auth
+https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/token
+
+
+RHSSO Credentials:
+* user: adminadmin
+* passwd 328bb342d5814a2cbb3ced07a29967e3
+
+Portal Credentials: 
+* user: admin@example.com
+* passwd: #Cecoban!
+
+RHSSO User auth: 
+* user: cecoban
+* passwd: #Cecoban!
+
+Kibana URL:
+https://kibana.apps.cecoban-0142.openshiftworkshop.com
+
+Login application Developer Portal
+* user: ramalho
+* passwd: #Cecoban!
+
+
+URL Rewrite: 
+
+    banks
+    obp/v3.1.0/banks
+
+3Scale OIDC 
+
+    https://3scale-admin:74364830-2eaf-47c7-8d40-8ccc78f1cb03@sso-sso.apps.cecoban-0142.openshiftworkshop.com:443/auth/realms/openbanking
+    https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking
+    https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/.well-known/openid-configuration
+
+Open License in Developer Portal
+
+https://www.openbanking.org.uk/open-licence/
+
+Developer Portal Access Code
+* cecoban
+
+Duvidas 
+- A API de Opendata não vai ser pública?
+
+
+
+== Useful references
 
 Glossary: https://www.openbanking.org.uk/about-us/glossary/
 
 Open Data API Specifications: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/16320694/Open+Data+API+Specifications
 Open Data API Sample Data: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/519143683/Open+Data+API+Dashboard
-
-
-== ATM APIs
 
 ATM Spec: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/230163079/ATM+API+Specification+v2.2.0#ATMAPISpecification_v2.2.0-Swagger
 
