@@ -1,31 +1,38 @@
 = CECOBAN - Open Banking Platform
 
-* Openshift URL: https://master.cecoban-0142.openshiftworkshop.com
-* Web App URL: https://tutorial-web-app-webapp.apps.cecoban-0142.openshiftworkshop.com
-** user: admin
-** passwd: #Cecoban!
+Openshift URL: https://master.cecoban-0142.openshiftworkshop.com
+
+Web App URL: https://tutorial-web-app-webapp.apps.cecoban-0142.openshiftworkshop.com
+
+    user: admin
+    passwd: #Cecoban!
 
 RHSSO URL: https://sso-sso.apps.cecoban-0142.openshiftworkshop.com
-** user: admin
-** passwd: 328bb342d5814a2cbb3ced07a29967e3
+
+    user: admin
+    passwd: 328bb342d5814a2cbb3ced07a29967e3
 
 3Scale URL: https://3scale-admin.apps.cecoban-0142.openshiftworkshop.com
+
 3Scale Developer Portal: https://3scale.apps.cecoban-0142.openshiftworkshop.com
-user: admin
-passwd: #Cecoban!
+
+    user: admin
+    passwd: #Cecoban!
 
 == 3Scale & RHSSO OIDC
 
-* Client ID: 3scale-admin
-* Client Secret: 74364830-2eaf-47c7-8d40-8ccc78f1cb03
+    Client ID: 3scale-admin
+    Client Secret: 74364830-2eaf-47c7-8d40-8ccc78f1cb03
 
-OpenID Connect Issuer: 
-https://3scale-admin:74364830-2eaf-47c7-8d40-8ccc78f1cb03@sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking
+OpenID Connect Issuer
+
+    https://3scale-admin:74364830-2eaf-47c7-8d40-8ccc78f1cb03@sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking
 
 
 Testing using Postman: 
-https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/auth
-https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/token
+
+    https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/auth
+    https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/token
 
 
 RHSSO Credentials:
@@ -65,11 +72,6 @@ https://www.openbanking.org.uk/open-licence/
 
 Developer Portal Access Code
 * cecoban
-
-Duvidas 
-- A API de Opendata não vai ser pública?
-
-
 
 == Useful references
 
