@@ -1,0 +1,1113 @@
+---
+openapi: 3.0.2
+info:
+  title: open-data
+  description: The Open Data API specifications allow API providers (e.g. banks, building
+    societies and ATM providers) to develop API endpoints which can then be accessed
+    by API users (e.g. third party developers) to build mobile and web applications
+    for banking customers.
+  version: 1.0.0
+paths:
+  /banks:
+    summary: Get a list of all banks
+    description: |
+      Returns a list of banks supported:
+
+      * ID used as parameter in URLs
+      * Short and full name of bank
+      * Logo URL
+      * Website
+    get:
+      summary: Returns a list of banks supported
+      responses:
+        200:
+          description: Return the list of banks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/banks'
+  /banks/{bank_id}:
+    summary: Path used to manage a single banks.
+    description: |-
+      Returns information about a single bank specified by BANK_ID including:
+
+      * Short and full name of bank
+      * Logo URL
+      * Website
+    get:
+      summary: Get a banks
+      description: Gets the details of a single instance of a `banks`.
+      operationId: getbanks
+      responses:
+        200:
+          description: Successful response - returns a single `banks`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/banks'
+    parameters:
+    - name: bank_id
+      in: path
+      description: A unique identifier for a `banks`.
+      required: true
+      schema:
+        type: string
+  /banks/{bank_id}/atms:
+    summary: Returns information about ATMs for a single bank specified by BANK_ID
+    description: |+
+      Returns information about ATMs for a single bank specified by BANK_ID including:
+      * Address
+      * Geo Location
+      * License the data under this endpoint is released under
+
+      Pagination:
+      * By default, 100 records are returned.
+
+      You can use the url query parameters limit and offset for pagination
+
+    get:
+      summary: Returns information about ATMs for a single bank
+      description: Returns information about ATMs for a single bank specified by BANK_ID
+      responses:
+        200:
+          description: Return the list of ATMs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/atms'
+              examples:
+                atms:
+                  value:
+                    id: atm-id-123
+                    bank_id: bank-id-123
+                    name: Atm by the Lake
+                    address:
+                      line_1: No 1 the Road
+                      line_2: The Place
+                      line_3: The Hill
+                      city: Berlin
+                      county: ""
+                      state: Brandenburg
+                      postcode: "13359"
+                      country_code: DE
+                    location:
+                      latitude: 11.45
+                      longitude: 11.45
+                    meta:
+                      license:
+                        id: "5"
+                        name: TESOBE
+                    monday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    tuesday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    wednesday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    thursday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    friday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    saturday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    sunday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    is_accessible: "true"
+                    located_at: Full service store
+                    more_info: short walk to the lake from here
+                    has_deposit_capability: "true"
+    parameters:
+    - name: bank_id
+      in: path
+      description: Bank Unique Identifier
+      required: true
+      schema:
+        type: string
+  /banks/{bank_id}/atms/{atm_id}:
+    summary: Returns information about ATM for a single bank
+    description: |-
+      Returns information about ATM for a single bank specified by BANK_ID and ATM_ID including:
+      * Address
+      * Geo Location
+      * License the data under this endpoint is released under
+    get:
+      summary: Returns information about ATM for a single bank
+      description: Returns information about ATM for a single bank specified by BANK_ID
+        and ATM_ID
+      responses:
+        200:
+          description: Return a specific ATM
+          content:
+            application/json:
+              examples:
+                atm:
+                  value:
+                    id: atm-id-123
+                    bank_id: bank-id-123
+                    name: Atm by the Lake
+                    address:
+                      line_1: No 1 the Road
+                      line_2: The Place
+                      line_3: The Hill
+                      city: Berlin
+                      county: ""
+                      state: Brandenburg
+                      postcode: "13359"
+                      country_code: DE
+                    location:
+                      latitude: 11.45
+                      longitude: 11.45
+                    meta:
+                      license:
+                        id: "5"
+                        name: TESOBE
+                    monday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    tuesday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    wednesday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    thursday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    friday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    saturday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    sunday:
+                      opening_time: 10:00
+                      closing_time: 18:00
+                    is_accessible: "true"
+                    located_at: Full service store
+                    more_info: short walk to the lake from here
+                    has_deposit_capability: "true"
+    parameters:
+    - name: bank_id
+      in: path
+      description: Bank Unique Identifier
+      required: true
+      schema:
+        type: string
+    - name: atm_id
+      in: path
+      description: ATM Unique Identifier
+      required: true
+      schema:
+        type: string
+  /banks/{bank_id}/products:
+    summary: Returns information about the financial products offered by a bank
+    description: |-
+      Returns information about the financial products offered by a bank specified by BANK_ID including:
+      * Name
+      * Code
+      * Parent Product Code
+      * Category
+      * Family
+      * Super Family
+      * More info URL
+      * Description
+      * Terms and Conditions
+      * License the data under this endpoint is released under
+    get:
+      summary: Returns information about the financial products offered by a bank
+      description: Returns information about the financial products offered by a bank
+        specified by BANK_ID
+      parameters:
+      - name: bank_id
+        in: path
+        description: Bank Unique Identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Return a list of products.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/products'
+              examples:
+                products:
+                  value:
+                    products:
+                    - bank_id: gh.29.uk
+                      code: product_code
+                      parent_product_code: parent
+                      name: product name
+                      category: category
+                      family: family
+                      super_family: super family
+                      more_info_url: www.example.com/prod1/more-info.html
+                      details: Details
+                      description: Description
+                      meta:
+                        license:
+                          id: "5"
+                          name: TESOBE
+                      product_attributes:
+                      - product_code: saving1
+                        product_attribute_id: 613c83ea-80f9-4560-8404-b9cd4ec42a7f
+                        name: OVERDRAFT_START_DATE
+                        type: DATE_WITH_DAY
+                        value: 2012-04-23
+    parameters:
+    - name: bank_id
+      in: path
+      description: Bank Unique Identifier
+      required: true
+  /banks/{bank_id}/branches:
+    summary: Returns information about branches for a single bank specified by BANK_ID
+    description: |-
+      Returns information about branches for a single bank specified by BANK_ID including:
+      * Name
+      * Address
+      * Geo Location
+      * License the data under this endpoint is released under
+      * Structured opening hours
+      * Accessible flag
+      * Branch Type
+      * More Info
+      * Pagination:
+
+      By default, 50 records are returned.
+
+      You can use the url query parameters limit and offset for pagination
+
+      You can also use the follow url query parameters:
+      * city - string, find Branches those in this city, optional
+      * withinMetersOf - number, find Branches within given meters distance, optional
+      * nearLatitude - number, a position of latitude value, cooperate with withMetersOf do query filter, optional
+      * nearLongitude - number, a position of longitude value, cooperate with withMetersOf do query filter, optional
+
+      note: withinMetersOf, nearLatitude and nearLongitude either all empty or all have value.
+    get:
+      summary: Returns information about branches for a single bank specified by BANK_ID
+      description: |-
+        Returns information about branches for a single bank specified by BANK_ID:
+
+        * Name
+        * Address
+        * Geo Location
+        * License the data under this endpoint is released under
+        * Structured opening hours
+        * Accessible flag
+        * Branch Type
+        * More Info
+
+        Pagination:
+
+        By default, 50 records are returned.
+
+        You can use the url query parameters limit and offset for pagination
+        You can also use the follow url query parameters:
+
+        * city - string, find Branches those in this city, optional
+        * withinMetersOf - number, find Branches within given meters distance, optional
+        * nearLatitude - number, a position of latitude value, cooperate with withMetersOf do query filter, optional
+        * nearLongitude - number, a position of longitude value, cooperate with withMetersOf do query filter, optional
+        * note: withinMetersOf, nearLatitude and nearLongitude either all empty or all have value.
+      parameters:
+      - name: bank_id
+        in: path
+        description: Bank Unique Identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Return a list of branches
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/branches'
+              examples:
+                branches:
+                  value:
+                    branches:
+                    - id: branch-id-123
+                      bank_id: bank-id-123
+                      name: Branch by the Lake
+                      address:
+                        line_1: No 1 the Road
+                        line_2: The Place
+                        line_3: The Hill
+                        city: Berlin
+                        county: String
+                        state: Brandenburg
+                        postcode: "13359"
+                        country_code: DE
+                      location:
+                        latitude: 10
+                        longitude: 10
+                      meta:
+                        license:
+                          id: PDDL
+                          name: 'Open Data Commons Public Domain Dedication and License '
+                      lobby:
+                        monday:
+                        - opening_time: 10:00
+                          closing_time: 18:00
+                        tuesday:
+                        - opening_time: 10:00
+                          closing_time: 18:00
+                        wednesday:
+                        - opening_time: 10:00
+                          closing_time: 18:00
+                        thursday:
+                        - opening_time: 10:00
+                          closing_time: 18:00
+                        friday:
+                        - opening_time: 10:00
+                          closing_time: 18:00
+                        saturday:
+                        - opening_time: 10:00
+                          closing_time: 18:00
+                        sunday:
+                        - opening_time: 10:00
+                          closing_time: 18:00
+                      drive_up:
+                        monday:
+                          opening_time: 10:00
+                          closing_time: 18:00
+                        tuesday:
+                          opening_time: 10:00
+                          closing_time: 18:00
+                        wednesday:
+                          opening_time: 10:00
+                          closing_time: 18:00
+                        thursday:
+                          opening_time: 10:00
+                          closing_time: 18:00
+                        friday:
+                          opening_time: 10:00
+                          closing_time: 18:00
+                        saturday:
+                          opening_time: 10:00
+                          closing_time: 18:00
+                        sunday:
+                          opening_time: 10:00
+                          closing_time: 18:00
+                      branch_routing:
+                        scheme: OBP
+                        address: 123abc
+                      is_accessible: "true"
+                      accessibleFeatures: wheelchair, atm usuable by the visually
+                        impaired
+                      branch_type: Full service store
+                      more_info: short walk to the lake from here
+                      phone_number: +381631954907
+    parameters:
+    - name: bank_id
+      in: path
+      description: Bank Unique Identifier
+      required: true
+  /banks/{bank_id}/branches/{branch_id}:
+    summary: Returns information about a single Branch specified by BANK_ID and BRANCH_ID
+    description: |-
+      Returns information about a single Branch specified by BANK_ID and BRANCH_ID including:
+      * Name
+      * Address
+      * IGeo Location
+
+      License the data under this endpoint is released under.
+    get:
+      summary: 'Returns information about a single Branch specified by BANK_ID and
+        BRANCH_ID including:'
+      description: |-
+        Returns information about a single Branch specified by BANK_ID and BRANCH_ID including:
+
+        * Name
+        * Address
+        * Geo Location
+        * License the data under this endpoint is released under.
+      parameters:
+      - name: bank_id
+        in: path
+        description: Bank Unique Identifier
+        required: true
+        schema:
+          type: string
+      - name: branch_id
+        in: path
+        description: Branch Unique Identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Return a specific branch.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/branches'
+              examples:
+                branch:
+                  value:
+                    id: branch-id-123
+                    bank_id: bank-id-123
+                    name: Branch by the Lake
+                    address:
+                      line_1: No 1 the Road
+                      line_2: The Place
+                      line_3: The Hill
+                      city: Berlin
+                      county: String
+                      state: Brandenburg
+                      postcode: "13359"
+                      country_code: DE
+                    location:
+                      latitude: 10
+                      longitude: 10
+                    meta:
+                      license:
+                        id: PDDL
+                        name: 'Open Data Commons Public Domain Dedication and License '
+                    lobby:
+                      monday:
+                      - opening_time: 10:00
+                        closing_time: 18:00
+                      tuesday:
+                      - opening_time: 10:00
+                        closing_time: 18:00
+                      wednesday:
+                      - opening_time: 10:00
+                        closing_time: 18:00
+                      thursday:
+                      - opening_time: 10:00
+                        closing_time: 18:00
+                      friday:
+                      - opening_time: 10:00
+                        closing_time: 18:00
+                      saturday:
+                      - opening_time: 10:00
+                        closing_time: 18:00
+                      sunday:
+                      - opening_time: 10:00
+                        closing_time: 18:00
+                    drive_up:
+                      monday:
+                        opening_time: 10:00
+                        closing_time: 18:00
+                      tuesday:
+                        opening_time: 10:00
+                        closing_time: 18:00
+                      wednesday:
+                        opening_time: 10:00
+                        closing_time: 18:00
+                      thursday:
+                        opening_time: 10:00
+                        closing_time: 18:00
+                      friday:
+                        opening_time: 10:00
+                        closing_time: 18:00
+                      saturday:
+                        opening_time: 10:00
+                        closing_time: 18:00
+                      sunday:
+                        opening_time: 10:00
+                        closing_time: 18:00
+                    branch_routing:
+                      scheme: OBP
+                      address: 123abc
+                    is_accessible: "true"
+                    accessibleFeatures: wheelchair, atm usuable by the visually impaired
+                    branch_type: Full service store
+                    more_info: short walk to the lake from here
+                    phone_number: +381631954907
+    parameters:
+    - name: bank_id
+      in: path
+      description: Bank Unique Identifier
+      required: true
+      schema:
+        type: string
+    - name: branch_id
+      in: path
+      description: Branch Unique Identifier
+      required: true
+      schema:
+        type: string
+  /banks/{bank_id}/products/{product_code}:
+    summary: Returns information about a financial Product offered by the bank
+    description: |-
+      Returns information about a financial Product offered by the bank specified by BANK_ID and PRODUCT_CODE including:
+
+      * Name
+      * Code
+      * Parent Product Code
+      * Category
+      * Family
+      * Super Family
+      * More info URL
+      * Description
+      * Terms and Conditions
+
+      License the data under this endpoint is released under
+    get:
+      summary: Returns information about a financial Product offered by the bank
+      description: Returns information about a financial Product offered by the bank
+        specified by BANK_ID and PRODUCT_CODE
+      responses:
+        200:
+          description: Return a specific product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/products'
+              examples:
+                product:
+                  value:
+                    bank_id: gh.29.uk
+                    code: product_code
+                    parent_product_code: parent
+                    name: product name
+                    category: category
+                    family: family
+                    super_family: super family
+                    more_info_url: www.example.com/prod1/more-info.html
+                    details: Details
+                    description: Description
+                    meta:
+                      license:
+                        id: "5"
+                        name: TESOBE
+                    product_attributes:
+                    - product_code: saving1
+                      product_attribute_id: 613c83ea-80f9-4560-8404-b9cd4ec42a7f
+                      name: OVERDRAFT_START_DATE
+                      type: DATE_WITH_DAY
+                      value: 2012-04-23
+    parameters:
+    - name: bank_id
+      in: path
+      description: Bank Unique Identifier
+      required: true
+      schema:
+        type: string
+    - name: product_code
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+components:
+  schemas:
+    banks:
+      title: Root Type for banks
+      description: The root of the banks type's schema.
+      type: object
+      properties:
+        name:
+          type: string
+        brands:
+          type: array
+          items: {}
+        baseUrl:
+          type: string
+        supportedAPIs:
+          type: object
+          properties:
+            business-current-accounts:
+              type: array
+              items: {}
+      example:
+        id: psd201-bank-x--uk
+        short_name: Bank X
+        full_name: The Bank of X
+        logo: https://static.openbankproject.com/images/sandbox/bank_x.png
+        website: https://www.example.com
+        bank_routing:
+          scheme: OBP
+          address: psd201-bank-x--uk
+    atms:
+      title: Root Type for atms
+      description: The root of the atms type's schema.
+      type: object
+      properties:
+        id:
+          type: string
+        bank_id:
+          type: string
+        name:
+          type: string
+        address:
+          type: object
+          properties:
+            line_1:
+              type: string
+            line_2:
+              type: string
+            line_3:
+              type: string
+            city:
+              type: string
+            county:
+              type: string
+            state:
+              type: string
+            postcode:
+              type: string
+            country_code:
+              type: string
+        location:
+          type: object
+          properties:
+            latitude:
+              format: double
+              type: number
+            longitude:
+              format: double
+              type: number
+        meta:
+          type: object
+          properties:
+            license:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+        monday:
+          type: object
+          properties:
+            opening_time:
+              type: string
+            closing_time:
+              type: string
+        tuesday:
+          type: object
+          properties:
+            opening_time:
+              type: string
+            closing_time:
+              type: string
+        wednesday:
+          type: object
+          properties:
+            opening_time:
+              type: string
+            closing_time:
+              type: string
+        thursday:
+          type: object
+          properties:
+            opening_time:
+              type: string
+            closing_time:
+              type: string
+        friday:
+          type: object
+          properties:
+            opening_time:
+              type: string
+            closing_time:
+              type: string
+        saturday:
+          type: object
+          properties:
+            opening_time:
+              type: string
+            closing_time:
+              type: string
+        sunday:
+          type: object
+          properties:
+            opening_time:
+              type: string
+            closing_time:
+              type: string
+        is_accessible:
+          type: string
+        located_at:
+          type: string
+        more_info:
+          type: string
+        has_deposit_capability:
+          type: string
+      example: |-
+        {
+            "id": "atm-id-123",
+            "bank_id": "bank-id-123",
+            "name": "Atm by the Lake",
+            "address": {
+                "line_1": "No 1 the Road",
+                "line_2": "The Place",
+                "line_3": "The Hill",
+                "city": "Berlin",
+                "county": "",
+                "state": "Brandenburg",
+                "postcode": "13359",
+                "country_code": "DE"
+            },
+            "location": {
+                "latitude": 11.45,
+                "longitude": 11.45
+            },
+            "meta": {
+                "license": {
+                    "id": "5",
+                    "name": "TESOBE"
+                }
+            },
+            "monday": {
+                "opening_time": "10:00",
+                "closing_time": "18:00"
+            },
+            "tuesday": {
+                "opening_time": "10:00",
+                "closing_time": "18:00"
+            },
+            "wednesday": {
+                "opening_time": "10:00",
+                "closing_time": "18:00"
+            },
+            "thursday": {
+                "opening_time": "10:00",
+                "closing_time": "18:00"
+            },
+            "friday": {
+                "opening_time": "10:00",
+                "closing_time": "18:00"
+            },
+            "saturday": {
+                "opening_time": "10:00",
+                "closing_time": "18:00"
+            },
+            "sunday": {
+                "opening_time": "10:00",
+                "closing_time": "18:00"
+            },
+            "is_accessible": "true",
+            "located_at": "Full service store",
+            "more_info": "short walk to the lake from here",
+            "has_deposit_capability": "true"
+        }
+    branches:
+      title: Root Type for branches
+      description: The root of the branches type's schema.
+      type: object
+      properties:
+        id:
+          type: string
+        bank_id:
+          type: string
+        name:
+          type: string
+        address:
+          type: object
+          properties:
+            line_1:
+              type: string
+            line_2:
+              type: string
+            line_3:
+              type: string
+            city:
+              type: string
+            county:
+              type: string
+            state:
+              type: string
+            postcode:
+              type: string
+            country_code:
+              type: string
+        location:
+          type: object
+          properties:
+            latitude:
+              format: int32
+              type: integer
+            longitude:
+              format: int32
+              type: integer
+        meta:
+          type: object
+          properties:
+            license:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+        lobby:
+          type: object
+          properties:
+            monday:
+              type: array
+              items: {}
+            tuesday:
+              type: array
+              items: {}
+            wednesday:
+              type: array
+              items: {}
+            thursday:
+              type: array
+              items: {}
+            friday:
+              type: array
+              items: {}
+            saturday:
+              type: array
+              items: {}
+            sunday:
+              type: array
+              items: {}
+        drive_up:
+          type: object
+          properties:
+            monday:
+              type: object
+              properties:
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+            tuesday:
+              type: object
+              properties:
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+            wednesday:
+              type: object
+              properties:
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+            thursday:
+              type: object
+              properties:
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+            friday:
+              type: object
+              properties:
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+            saturday:
+              type: object
+              properties:
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+            sunday:
+              type: object
+              properties:
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+        branch_routing:
+          type: object
+          properties:
+            scheme:
+              type: string
+            address:
+              type: string
+        is_accessible:
+          type: string
+        accessibleFeatures:
+          type: string
+        branch_type:
+          type: string
+        more_info:
+          type: string
+        phone_number:
+          type: string
+      example: |-
+        {
+            "id": "branch-id-123",
+            "bank_id": "bank-id-123",
+            "name": "Branch by the Lake",
+            "address": {
+                "line_1": "No 1 the Road",
+                "line_2": "The Place",
+                "line_3": "The Hill",
+                "city": "Berlin",
+                "county": "String",
+                "state": "Brandenburg",
+                "postcode": "13359",
+                "country_code": "DE"
+            },
+            "location": {
+                "latitude": 10,
+                "longitude": 10
+            },
+            "meta": {
+                "license": {
+                    "id": "PDDL",
+                    "name": "Open Data Commons Public Domain Dedication and License "
+                }
+            },
+            "lobby": {
+                "monday": [
+                    {
+                        "opening_time": "10:00",
+                        "closing_time": "18:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "opening_time": "10:00",
+                        "closing_time": "18:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "opening_time": "10:00",
+                        "closing_time": "18:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "opening_time": "10:00",
+                        "closing_time": "18:00"
+                    }
+                ],
+                "friday": [
+                    {
+                        "opening_time": "10:00",
+                        "closing_time": "18:00"
+                    }
+                ],
+                "saturday": [
+                    {
+                        "opening_time": "10:00",
+                        "closing_time": "18:00"
+                    }
+                ],
+                "sunday": [
+                    {
+                        "opening_time": "10:00",
+                        "closing_time": "18:00"
+                    }
+                ]
+            },
+            "drive_up": {
+                "monday": {
+                    "opening_time": "10:00",
+                    "closing_time": "18:00"
+                },
+                "tuesday": {
+                    "opening_time": "10:00",
+                    "closing_time": "18:00"
+                },
+                "wednesday": {
+                    "opening_time": "10:00",
+                    "closing_time": "18:00"
+                },
+                "thursday": {
+                    "opening_time": "10:00",
+                    "closing_time": "18:00"
+                },
+                "friday": {
+                    "opening_time": "10:00",
+                    "closing_time": "18:00"
+                },
+                "saturday": {
+                    "opening_time": "10:00",
+                    "closing_time": "18:00"
+                },
+                "sunday": {
+                    "opening_time": "10:00",
+                    "closing_time": "18:00"
+                }
+            },
+            "branch_routing": {
+                "scheme": "OBP",
+                "address": "123abc"
+            },
+            "is_accessible": "true",
+            "accessibleFeatures": "wheelchair, atm usuable by the visually impaired",
+            "branch_type": "Full service store",
+            "more_info": "short walk to the lake from here",
+            "phone_number": "+381631954907"
+        }
+    products:
+      title: Root Type for products
+      description: '    '
+      type: object
+      properties:
+        bank_id:
+          type: string
+        code:
+          type: string
+        parent_product_code:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+        family:
+          type: string
+        super_family:
+          type: string
+        more_info_url:
+          type: string
+        details:
+          type: string
+        description:
+          type: string
+        meta:
+          type: object
+          properties:
+            license:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+        product_attributes:
+          type: array
+          items: {}
+      example: |-
+        {
+            "bank_id": "gh.29.uk",
+            "code": "product_code",
+            "parent_product_code": "parent",
+            "name": "product name",
+            "category": "category",
+            "family": "family",
+            "super_family": "super family",
+            "more_info_url": "www.example.com/prod1/more-info.html",
+            "details": "Details",
+            "description": "Description",
+            "meta": {
+                "license": {
+                    "id": "5",
+                    "name": "TESOBE"
+                }
+            },
+            "product_attributes": [
+                {
+                    "product_code": "saving1",
+                    "product_attribute_id": "613c83ea-80f9-4560-8404-b9cd4ec42a7f",
+                    "name": "OVERDRAFT_START_DATE",
+                    "type": "DATE_WITH_DAY",
+                    "value": "2012-04-23"
+                }
+            ]
+        }
