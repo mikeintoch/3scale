@@ -31,8 +31,12 @@ OpenID Connect Issuer
 
 Testing using Postman: 
 
+    Authorization Code
+    https://www.getpostman.com/oauth2/callback
     https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/auth
     https://sso-sso.apps.cecoban-0142.openshiftworkshop.com/auth/realms/openbanking/protocol/openid-connect/token
+    0277d506
+    2f8de72cbb2284f1064af175d793c4b8
 
 
 RHSSO Credentials:
