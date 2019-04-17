@@ -1,0 +1,26 @@
+<h1>Documentation</h1>
+
+<p>Live CECOBAN Open Banking Documentation</p>
+
+<div id="api-adoption-framework">
+  <img src="/images/adopt-api.png" alt="api adoption"></img>
+</div>
+
+{% cdn_asset /swagger-ui/2.2.10/swagger-ui.js %}
+{% cdn_asset /swagger-ui/2.2.10/swagger-ui.css %}
+
+{% include 'shared/swagger_ui', spec_system_name: "open-data-api-spec" %}
+
+
+<script type="text/javascript">
+  (function () {
+    {% comment %}
+      // you have access to swaggerUi.options object to customize its behaviour
+      // such as setting a different docExpansion mode
+      window.swaggerUi.options['docExpansion'] = 'none';
+      // or even getting the swagger specification loaded from a different url
+      window.swaggerUi.options['url'] = "http://petstore.swagger.wordnik.com/api/api-docs";
+    {% endcomment %}
+    window.swaggerUi.load();
+  }());
+</script>

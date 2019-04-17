@@ -77,6 +77,12 @@ https://www.openbanking.org.uk/open-licence/
 Developer Portal Access Code
 * cecoban
 
+Developer Portal SSO Integration
+
+    Client ID: 38b201d8
+    Client Secret: b9c2ecfedbf8be291302385c5eee0b1d
+    Redirect URL: https://3scale.apps.cecoban-0142.openshiftworkshop.com/docs
+
 == Useful references
 
 Glossary: https://www.openbanking.org.uk/about-us/glossary/
@@ -90,4 +96,21 @@ ATM Sample
 
 https://openbanking.santander.co.uk/sanuk/external/open-banking/v2.2/atms
 
+
+
+== Roteiro V1.
+
+Insert Rate Limit.
+
+Slide Deck: https://docs.google.com/presentation/d/1lACiIeu9fgtrJ6K69ApC6AhowVtIzrPwP8PQZW90jHM/edit#slide=id.g31db18e50f_0_0
+3Scale: https://3scale-admin.apps.cecoban-0142.openshiftworkshop.com
+Single Sign On: https://sso-sso.apps.cecoban-0142.openshiftworkshop.com
+Developer Portal: https://3scale.apps.cecoban-0142.openshiftworkshop.com
+Locations app: http://www-openbankingclient.apps.cecoban-0142.openshiftworkshop.com
+
+Autenticar pelo 3Scale!
+ramalho
+#Cecoban!
+
+Openshift: https://master.cecoban-0142.openshiftworkshop.com/console/project/openbankingclient/overview
 

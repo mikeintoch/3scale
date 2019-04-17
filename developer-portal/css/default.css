@@ -686,3 +686,14 @@ p {
 .products-overview {
     margin-right: 17px;
 }
+
+.panel.panel-default.product:hover {
+  cursor: pointer;
+  /* border-radius: 10%; */
+  box-shadow: 2px 2px 2px 2px;
+  box-sizing: content-box;
+}
+
+ul.products-body-list {
+  list-style: none;
+}
