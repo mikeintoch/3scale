@@ -1,0 +1,714 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "open-data",
+    "description": "The Open Data API specifications allow API providers (e.g. banks, building societies and ATM providers) to develop API endpoints which can then be accessed by API users (e.g. third party developers) to build mobile and web applications for banking customers.",
+    "contact": {}
+  },
+  "host": "www.example.com",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/banks": {
+      "get": {
+        "description": "Returns a list of banks supported",
+        "summary": "Returns a list of banks supported",
+        "operationId": "BanksGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Return the list of banks.",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforbanks"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/banks/{bank_id}": {
+      "get": {
+        "description": "Gets the details of a single instance of a `banks`.",
+        "summary": "getbanks",
+        "operationId": "BanksByBankIdGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bank_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "A unique identifier for a `banks`."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response - returns a single `banks`.",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforbanks"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/banks/{bank_id}/atms": {
+      "get": {
+        "description": "Returns information about ATMs for a single bank specified by BANK_ID",
+        "summary": "Returns information about ATMs for a single bank",
+        "operationId": "BanksAtmsByBankIdGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bank_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Bank Unique Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the list of ATMs",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforatms"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/banks/{bank_id}/atms/{atm_id}": {
+      "get": {
+        "description": "Returns information about ATM for a single bank specified by BANK_ID and ATM_ID",
+        "summary": "Returns information about ATM for a single bank",
+        "operationId": "BanksAtmsByBankIdAndAtmIdGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bank_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Bank Unique Identifier"
+          },
+          {
+            "name": "atm_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ATM Unique Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return a specific ATM",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/banks/{bank_id}/products": {
+      "get": {
+        "description": "Returns information about the financial products offered by a bank specified by BANK_ID",
+        "summary": "Returns information about the financial products offered by a bank",
+        "operationId": "BanksProductsByBankIdGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bank_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Bank Unique Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return a list of products.",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforproducts"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/banks/{bank_id}/branches": {
+      "get": {
+        "description": "Returns information about branches for a single bank specified by BANK_ID:\n\n* Name\n* Address\n* Geo Location\n* License the data under this endpoint is released under\n* Structured opening hours\n* Accessible flag\n* Branch Type\n* More Info\n\nPagination:\n\nBy default, 50 records are returned.\n\nYou can use the url query parameters limit and offset for pagination\nYou can also use the follow url query parameters:\n\n* city - string, find Branches those in this city, optional\n* withinMetersOf - number, find Branches within given meters distance, optional\n* nearLatitude - number, a position of latitude value, cooperate with withMetersOf do query filter, optional\n* nearLongitude - number, a position of longitude value, cooperate with withMetersOf do query filter, optional\n* note: withinMetersOf, nearLatitude and nearLongitude either all empty or all have value.",
+        "summary": "Returns information about branches for a single bank specified by BANK_ID",
+        "operationId": "BanksBranchesByBankIdGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bank_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Bank Unique Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return a list of branches",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforbranches"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/banks/{bank_id}/branches/{branch_id}": {
+      "get": {
+        "description": "Returns information about a single Branch specified by BANK_ID and BRANCH_ID including:\n\n* Name\n* Address\n* Geo Location\n* License the data under this endpoint is released under.",
+        "summary": "Returns information about a single Branch specified by BANK_ID and BRANCH_ID including:",
+        "operationId": "BanksBranchesByBankIdAndBranchIdGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bank_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Bank Unique Identifier"
+          },
+          {
+            "name": "branch_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Branch Unique Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return a specific branch.",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforbranches"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/banks/{bank_id}/products/{product_code}": {
+      "get": {
+        "description": "Returns information about a financial Product offered by the bank specified by BANK_ID and PRODUCT_CODE",
+        "summary": "Returns information about a financial Product offered by the bank",
+        "operationId": "BanksProductsByBankIdAndProductCodeGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bank_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Bank Unique Identifier"
+          },
+          {
+            "name": "product_code",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Product ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return a specific product",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforproducts"
+            },
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RootTypeforbanks": {
+      "title": "RootTypeforbanks",
+      "description": "The root of the banks type's schema.",
+      "example": {
+        "id": "psd201-bank-x--uk",
+        "short_name": "Bank X",
+        "full_name": "The Bank of X",
+        "logo": "https://static.openbankproject.com/images/sandbox/bank_x.png",
+        "website": "https://www.example.com",
+        "bank_routing": {
+          "scheme": "OBP",
+          "address": "psd201-bank-x--uk"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "brands": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "baseUrl": {
+          "type": "string"
+        },
+        "supportedAPIs": {
+          "$ref": "#/definitions/SupportedAPIs"
+        }
+      }
+    },
+    "RootTypeforatms": {
+      "title": "RootTypeforatms",
+      "description": "The root of the atms type's schema.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "bank_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        },
+        "monday": {
+          "$ref": "#/definitions/Monday"
+        },
+        "tuesday": {
+          "$ref": "#/definitions/Tuesday"
+        },
+        "wednesday": {
+          "$ref": "#/definitions/Wednesday"
+        },
+        "thursday": {
+          "$ref": "#/definitions/Thursday"
+        },
+        "friday": {
+          "$ref": "#/definitions/Friday"
+        },
+        "saturday": {
+          "$ref": "#/definitions/Saturday"
+        },
+        "sunday": {
+          "$ref": "#/definitions/Sunday"
+        },
+        "is_accessible": {
+          "type": "string"
+        },
+        "located_at": {
+          "type": "string"
+        },
+        "more_info": {
+          "type": "string"
+        },
+        "has_deposit_capability": {
+          "type": "string"
+        }
+      }
+    },
+    "RootTypeforbranches": {
+      "title": "RootTypeforbranches",
+      "description": "The root of the branches type's schema.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "bank_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "location": {
+          "$ref": "#/definitions/Location1"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        },
+        "lobby": {
+          "$ref": "#/definitions/Lobby"
+        },
+        "drive_up": {
+          "$ref": "#/definitions/DriveUp"
+        },
+        "branch_routing": {
+          "$ref": "#/definitions/BranchRouting"
+        },
+        "is_accessible": {
+          "type": "string"
+        },
+        "accessibleFeatures": {
+          "type": "string"
+        },
+        "branch_type": {
+          "type": "string"
+        },
+        "more_info": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        }
+      }
+    },
+    "RootTypeforproducts": {
+      "title": "RootTypeforproducts",
+      "type": "object",
+      "properties": {
+        "bank_id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "parent_product_code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "family": {
+          "type": "string"
+        },
+        "super_family": {
+          "type": "string"
+        },
+        "more_info_url": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        },
+        "product_attributes": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "Address": {
+      "title": "Address",
+      "type": "object",
+      "properties": {
+        "line_1": {
+          "type": "string"
+        },
+        "line_2": {
+          "type": "string"
+        },
+        "line_3": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        }
+      }
+    },
+    "BranchRouting": {
+      "title": "BranchRouting",
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "DriveUp": {
+      "title": "DriveUp",
+      "type": "object",
+      "properties": {
+        "monday": {
+          "$ref": "#/definitions/Monday"
+        },
+        "tuesday": {
+          "$ref": "#/definitions/Tuesday"
+        },
+        "wednesday": {
+          "$ref": "#/definitions/Wednesday"
+        },
+        "thursday": {
+          "$ref": "#/definitions/Thursday"
+        },
+        "friday": {
+          "$ref": "#/definitions/Friday"
+        },
+        "saturday": {
+          "$ref": "#/definitions/Saturday"
+        },
+        "sunday": {
+          "$ref": "#/definitions/Sunday"
+        }
+      }
+    },
+    "Friday": {
+      "title": "Friday",
+      "type": "object",
+      "properties": {
+        "opening_time": {
+          "type": "string"
+        },
+        "closing_time": {
+          "type": "string"
+        }
+      }
+    },
+    "License": {
+      "title": "License",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Lobby": {
+      "title": "Lobby",
+      "type": "object",
+      "properties": {
+        "monday": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "tuesday": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "wednesday": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "thursday": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "friday": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "saturday": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "sunday": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "Location": {
+      "title": "Location",
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Location1": {
+      "title": "Location1",
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "longitude": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Meta": {
+      "title": "Meta",
+      "type": "object",
+      "properties": {
+        "license": {
+          "$ref": "#/definitions/License"
+        }
+      }
+    },
+    "Monday": {
+      "title": "Monday",
+      "type": "object",
+      "properties": {
+        "opening_time": {
+          "type": "string"
+        },
+        "closing_time": {
+          "type": "string"
+        }
+      }
+    },
+    "Saturday": {
+      "title": "Saturday",
+      "type": "object",
+      "properties": {
+        "opening_time": {
+          "type": "string"
+        },
+        "closing_time": {
+          "type": "string"
+        }
+      }
+    },
+    "Sunday": {
+      "title": "Sunday",
+      "type": "object",
+      "properties": {
+        "opening_time": {
+          "type": "string"
+        },
+        "closing_time": {
+          "type": "string"
+        }
+      }
+    },
+    "SupportedAPIs": {
+      "title": "SupportedAPIs",
+      "type": "object",
+      "properties": {
+        "business-current-accounts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "Thursday": {
+      "title": "Thursday",
+      "type": "object",
+      "properties": {
+        "opening_time": {
+          "type": "string"
+        },
+        "closing_time": {
+          "type": "string"
+        }
+      }
+    },
+    "Tuesday": {
+      "title": "Tuesday",
+      "type": "object",
+      "properties": {
+        "opening_time": {
+          "type": "string"
+        },
+        "closing_time": {
+          "type": "string"
+        }
+      }
+    },
+    "Wednesday": {
+      "title": "Wednesday",
+      "type": "object",
+      "properties": {
+        "opening_time": {
+          "type": "string"
+        },
+        "closing_time": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": []
+}
