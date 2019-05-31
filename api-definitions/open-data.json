@@ -2,14 +2,14 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "open-data",
+    "title": "Open Data API",
     "description": "The Open Data API specifications allow API providers (e.g. banks, building societies and ATM providers) to develop API endpoints which can then be accessed by API users (e.g. third party developers) to build mobile and web applications for banking customers.",
     "contact": {}
   },
-  "host": "www.example.com",
-  "basePath": "/",
+  "host": "api.openbankproject.com",
+  "basePath": "/obp/v3.1.0",
   "schemes": [
-    "http"
+    "https"
   ],
   "consumes": [
     "application/json"
