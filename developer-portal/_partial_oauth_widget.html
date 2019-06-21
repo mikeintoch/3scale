@@ -24,9 +24,9 @@
    		{% endfor %}
 </select>
 {% else %}
-<a class="btn btn-primary" id="oidc" href="">Authorize</a>
+<a class="btn btn-primary" id="oidc" href="">Autorizar</a>
 <select id="keySelect" onchange="addKey('auth')">
-          <option>Choose your application</option>
+          <option>Eligue tu aplicación</option>
   		{% for application in current_account.applications %}
           <option value="{{application.keys.first}}|{{application.application_id}}">{{application.name}} | {{application.service.name}}</option>
    		{% endfor %}
