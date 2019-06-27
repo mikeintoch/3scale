@@ -24,12 +24,12 @@
                                     <img src="/images/lock.png" width="50px" height="50px"/>
                                 </div> 
                                 <div class="security-title">
-                                    Keep passwords to yourself
+                                     Guárdate las contraseñas para ti mismo 
                                 </div>                                    
                             </div>
                             <div class="panel-body panel-footer">
-                                    <p>With Open Banking, you’re never asked to share your password or login details with anyone other than your own bank or building society.</p> 
-                                    <p>Safe. Secure. Simple.</p>
+                                    <p>Con Open Banking, nunca se le pedirá que comparta su contraseña o detalles de inicio de sesión con nadie que no sea su propio banco o sociedad de crédito inmobiliario.</p> 
+                                    <p>Confiable. Seguro. Simple.</p>
                             </div>
                         </div>
                     </div>
@@ -40,13 +40,13 @@
                                     <img src="/images/lock.png" width="50px" height="50px"/>
                                 </div> 
                                 <div class="security-title">
-                                    You stay in control
+                                    Tu mantienes el control
                                 </div>
                             </div>
                             <div class="panel-body panel-footer">
                                 <p>
-                                This allows regulated third party providers to set up or make payments directly 
-                                from an online payment account, such as a single payment or a recurring payment.
+                                Esto permite a los terceros proveedores regulados establecer o realizar pagos directamente 
+                                desde una cuenta de pago en línea, como un pago único o un pago periódico.
                                 </p>
                             </div>
                         </div>
@@ -58,11 +58,11 @@
                                     <img src="/images/lock.png" width="50px" height="50px"/>
                                 </div> 
                                 <div class="security-title">
-                                    You're protected
+                                    Estás protegido
                                 </div>                                      
                             </div>
                             <div class="panel-body panel-footer">                    
-                                <p>Apps and websites enrolled on the Open Banking Directory are regulated by the Financial Conduct Authority (FCA) or European equivalent. It means there are strict rules about how they operate and keep your data secure.</p>
+                                <p>Las aplicaciones y sitios web inscritos en el Open Banking Directory están regulados por la Financial Conduct Authority (FCA) o su equivalente europeo. Esto significa que hay reglas estrictas sobre cómo funcionan y cómo mantener sus datos seguros.</p>
                             </div>
                         </div>
                     </div>
@@ -77,17 +77,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1>Your API Key</h1>
+                <h1>Tu llave para usar nuestras API</h1>
                 <br>
                 <p class="lead">
-                    This is your API key that should be kept secret. Use it to authenticate and report the calls you make to the Open Banking APIs.
+                    Esta es su clave de API que debe mantenerse en secreto. Se usa para autenticar y reportar las llamadas que realiza a las APIs de Open Banking.
                 </p>
             </div>
             <div class="col-md-6" style="padding-top:2em;">
                 <div class="panel panel-default" id="access-details">
                     <div class="panel-heading">
                         <i class="fa fa-key"></i>
-                        Credentials
+                        Credenciales
                         {% if current_account.applications.size > 0 %}
                             <a class="pull-right" href="{{ urls.applications }}" title="Applications">
                             <i class="fa fa-chevron-right"></i>
@@ -155,24 +155,23 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h3>Register</h3>
+                <h3>Registrate</h3>
                 <p>
                 <i class="fa fa-sign-in fa-3x pull-left"></i>
-                Register to the developer portal to use the Open Banking APIs
-                </p>
+				Regístrese en el portal del desarrollador para utilizar las API de Banca Abierta</p>
             </div>
             <div class="col-md-4">
-                <h3>Get your API key</h3>
+                <h3>Obtén tu clave de API</h3>
                 <p>
                 <i class="fa fa-key fa-3x pull-left"></i>
-                Use your API key to authenticate and report the calls you make
+                 Utilice su clave de API para autenticar e informar de las llamadas que realiza
                 </p>
             </div>
             <div class="col-md-4">
-                <h3>Create your app</h3>
+                <h3>Crea tu aplicación</h3>
                 <p>
                 <i class="fa fa-code fa-3x pull-left"></i>
-                Start coding and create awesome applications with the Open Banking APIs
+                Comience a codificar y cree aplicaciones impresionantes con las API de Banca Abierta
                 </p>
             </div>
         </div>
@@ -183,7 +182,7 @@
         <div class="container">
             <h1>Productos</h1>
             <div class="description">
-                <p>You can visit the product pages below or view the technical API documentation for further details</p>
+                <p>Puede visitar las páginas de productos a continuación o consultar la documentación técnica de la API para obtener más detalles.</p>
             </div>
             <div class="row open-services">
                 <div class="col-md-12">
@@ -192,7 +191,7 @@
                             <div class="panel panel-default product" data-link="datos-abiertos">
                                 <div class="panel-heading image-center">
                                     <img src="/images/opendata-icon.png" width="50px" height="50px" />
-                                    <div class="catalog-title">Datos Abiertos</div>
+                                    <div class="catalog-title"><a href="products/datos-abiertos">Datos Abiertos </a> </div>
                                 </div>
                                 <div class="panel-body">      
                                     <ul class="products-body-list">
@@ -208,7 +207,7 @@
                             <div class="panel panel-default product" data-link="datos-agregados">
                                 <div class="panel-heading image-center">
                                     <img src="/images/payment-icon.png" width="50px" height="50px" />
-                                    <div class="catalog-title">Datos agregados</div>
+                                    <div class="catalog-title"><a href="products/datos-agregados">Datos agregados </a></div>
                                 </div>
                                 <div class="panel-body">
                                     <ul class="products-body-list">
@@ -222,7 +221,7 @@
                             <div class="panel panel-default product" data-link="datos-transaccionales">
                                 <div class="panel-heading image-center">
                                     <img src="/images/account-icon.png" width="50px" height="50px" /> 
-                                    <div class="catalog-title">Datos Transaccionales</div>
+                                    <div class="catalog-title"><a href="products/datos-transaccionales">Datos Transaccionales </a></div>
                                 </div>
                                 <div class="panel-body">
                                     <ul class="products-body-list">
@@ -236,7 +235,7 @@
                             <div class="panel panel-default product" data-link="pagos">
                                 <div class="panel-heading image-center">
                                     <img src="/images/account-icon.png" width="50px" height="50px" /> 
-                                    <div class="catalog-title">Pagos</div>
+                                    <div class="catalog-title"><a href="products/datos-pago">Pagos</a></div>
                                 </div>
                                 <div class="panel-body">
                                     <ul class="products-body-list">

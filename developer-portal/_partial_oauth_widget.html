@@ -18,7 +18,7 @@
 {% assign param = url | split: 'client_id=' | last %}
 <a class="btn btn-primary" id="oidc" href="javascript:void(0);" >Get Token</a>
 <select id="keySelect" onchange="addKey('token')">
-          <option>Choose your application</option>
+          <option>Elije tu aplicación</option>
   		{% for application in current_account.applications %}
           <option value="{{application.keys.first}}|{{application.application_id}}">{{application.name}} | {{application.service.name}}</option>
    		{% endfor %}
